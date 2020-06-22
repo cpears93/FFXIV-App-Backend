@@ -1,13 +1,17 @@
 package com.example.codeclan.FinalFantasyXivApp.components;
 
 import com.example.codeclan.FinalFantasyXivApp.models.Character;
+import com.example.codeclan.FinalFantasyXivApp.models.Raid;
 import com.example.codeclan.FinalFantasyXivApp.models.Server;
 import com.example.codeclan.FinalFantasyXivApp.repository.CharacterRepository;
+import com.example.codeclan.FinalFantasyXivApp.repository.RaidRepository;
 import com.example.codeclan.FinalFantasyXivApp.repository.ServerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.Properties;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -17,6 +21,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     ServerRepository serverRepository;
+
+    @Autowired
+    RaidRepository raidRepository;
 
     public DataLoader() {
 
@@ -128,5 +135,47 @@ public class DataLoader implements ApplicationRunner {
         Character bard = new Character("Archer", "Bard", "Ranged Physical DPS", "Gridania", "None", 1, titan);
         characterRepository.save(bard);
 
+
+        Raid aRealmReborn1 = new Raid("The Binding Coil of Bahamut", 50, 70, 5, 95, 10, "Primal Awakening");
+        raidRepository.save(aRealmReborn1);
+
+        Raid aRealmReborn2 = new Raid("The Second Coil of Bahamut", 50, 90, 4, 110, 20, "Another Turn in the Coil");
+        raidRepository.save(aRealmReborn2);
+
+        Raid aRealmReborn3 = new Raid("The Final Coil of Bahamut", 50, 90, 4, 130, 30, "Fragments of Truth");
+        raidRepository.save(aRealmReborn3);
+
+        Raid heavensward1 = new Raid("Alexander: Gordias", 60, 170, 4, 190, 10, "Disarmed");
+        raidRepository.save(heavensward1);
+
+        Raid heavensward2 = new Raid("Alexander: Midas", 60, 215, 4, 220, 10, "Disarmed");
+        raidRepository.save(heavensward2);
+
+        Raid heavensward3 = new Raid("Alexander: The Creator", 60, 230, 4, 250, 20, "Rearmed");
+        raidRepository.save(heavensward3);
+
+        Raid stormblood1 = new Raid("Omega: Deltascape", 70, 295, 4, 320, 10, "Into the Deltascape");
+        raidRepository.save(stormblood1);
+
+        Raid stormblood2 = new Raid("The Unending Coil of Bahamut", 70, 340, 1, 345, 30, "Wandering Minstrel, Kugane");
+        raidRepository.save(stormblood2);
+
+        Raid stormblood3 = new Raid("Omega: Sigmascape", 70, 325, 4, 350, 10, "No Slowing Down");
+        raidRepository.save(stormblood3);
+
+        Raid stormblood4 = new Raid("The Minstrel's Ballad: The Weapon's Refrain", 70, 370, 1, 375, 30, "Wandering Minstrel, Kugane");
+        raidRepository.save(stormblood4);
+
+        Raid stormblood5 = new Raid("Omega: Alphascape", 70, 355, 4, 380, 20, "In the Beginning, There Was Chaos");
+        raidRepository.save(stormblood5);
+
+        Raid shadowbringers1 = new Raid("Eden's Gate", 80, 425, 4, 450, 15, "Deploy The Core");
+        raidRepository.save(shadowbringers1);
+
+        Raid shadowbringers2 = new Raid("The Epic of Alexander", 80, 475, 1, 475, 30, "Wandering Minstrel, Kugane");
+        raidRepository.save(shadowbringers2);
+
+        Raid shadowbringers3 = new Raid("Eden's Verse", 80, 455, 4, 480, 30, "Blood and Thunder");
+        raidRepository.save(shadowbringers3);
     }
 }

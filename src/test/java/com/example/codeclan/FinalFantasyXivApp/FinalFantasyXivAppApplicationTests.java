@@ -1,8 +1,10 @@
 package com.example.codeclan.FinalFantasyXivApp;
 
 import com.example.codeclan.FinalFantasyXivApp.models.Character;
+import com.example.codeclan.FinalFantasyXivApp.models.Raid;
 import com.example.codeclan.FinalFantasyXivApp.models.Server;
 import com.example.codeclan.FinalFantasyXivApp.repository.CharacterRepository;
+import com.example.codeclan.FinalFantasyXivApp.repository.RaidRepository;
 import com.example.codeclan.FinalFantasyXivApp.repository.ServerRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -24,17 +26,23 @@ class FinalFantasyXivAppApplicationTests {
 	@Autowired
 	ServerRepository serverRepository;
 
+	@Autowired
+	RaidRepository raidRepository;
+
 	@Test
 	public void contextLoads() {
 	}
 
 	@Test
-	public void createCharacterAndServerThenSave(){
+	public void createCharacterServerAndRaidThenSave() {
+
 
 		Server jenova = new Server("Jenova", "Aether", "North America", 94863);
 		serverRepository.save(jenova);
 		Character dragoon = new Character("Lancer", "Dragoon", "Melee DPS", "Gridania", "None", 1, jenova);
 		characterRepository.save(dragoon);
+		Raid shadowbringers2 = new Raid("The Epic of Alexander", 80, 475, 1, 475, 30, "Wandering Minstrel, Kugane");
+		raidRepository.save(shadowbringers2);
 	}
 
 	@Test
