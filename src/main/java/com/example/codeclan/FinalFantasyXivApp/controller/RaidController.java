@@ -16,31 +16,32 @@ public class RaidController {
     RaidRepository raidRepository;
 
     @GetMapping(value = "/raids")
-    public ResponseEntity<List<Raid>> getAllRaids(){
+    public ResponseEntity <List<Raid>> getAllRaids(){
         return new ResponseEntity<>(raidRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/raids/{id}")
-    public ResponseEntity getRaid(@PathVariable Long id){
+    @GetMapping(value = "/servers/{id}")
+    public ResponseEntity getServer(@PathVariable Long id){
         return new ResponseEntity<>(raidRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/raids/{id}")
-    public ResponseEntity<Raid> postRaid(@RequestBody Raid raid){
+    @PostMapping(value = "/raids")
+    public ResponseEntity<Raid> createRaid(@RequestBody Raid raid){
         raidRepository.save(raid);
         return new ResponseEntity<>(raid, HttpStatus.CREATED);
     }
 
-    @PatchMapping(value = "/raids/{id}")
+    @PatchMapping(value = "/servers/{id}")
     public ResponseEntity<Raid> updateRaid(@RequestBody Raid raid){
         raidRepository.save(raid);
         return new ResponseEntity<>(raid, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/raids/{id}")
+    @DeleteMapping(value = "/servers/{id}")
     public ResponseEntity<Raid> deleteRaid(@PathVariable Long id){
         Raid found = raidRepository.getOne(id);
         raidRepository.delete(found);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
+
 }

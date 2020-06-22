@@ -1,6 +1,7 @@
 package com.example.codeclan.FinalFantasyXivApp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +13,7 @@ public class Raid {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "Level")
+    @Column(name = "level")
     private int level;
 
     @Column(name = "itemLevelReq")
@@ -30,9 +31,9 @@ public class Raid {
     @Column(name = "unlock")
     private String unlock;
 
-    @JsonIgnoreProperties(value="raids")
+    @JsonIgnoreProperties(value="raid")
     @OneToMany(mappedBy = "raid", fetch = FetchType.LAZY)
-    private List<com.example.codeclan.FinalFantasyXivApp.models.Character> characters;
+    private List<com.example.codeclan.FinalFantasyXivApp.models.Raid> raids;
 
     public Raid(String name, int level, int itemLevelReq, int turns, int lootItemLevel, int tomePerTurn, String unlock) {
         this.name = name;

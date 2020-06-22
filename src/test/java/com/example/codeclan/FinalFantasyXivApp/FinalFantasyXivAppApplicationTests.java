@@ -34,15 +34,13 @@ class FinalFantasyXivAppApplicationTests {
 	}
 
 	@Test
-	public void createCharacterServerAndRaidThenSave() {
+	public void createCharacterAndServerThenSave() {
 
 
 		Server jenova = new Server("Jenova", "Aether", "North America", 94863);
 		serverRepository.save(jenova);
 		Character dragoon = new Character("Lancer", "Dragoon", "Melee DPS", "Gridania", "None", 1, jenova);
 		characterRepository.save(dragoon);
-		Raid shadowbringers2 = new Raid("The Epic of Alexander", 80, 475, 1, 475, 30, "Wandering Minstrel, Kugane");
-		raidRepository.save(shadowbringers2);
 	}
 
 	@Test

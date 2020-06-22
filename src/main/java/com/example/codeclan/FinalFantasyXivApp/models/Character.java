@@ -33,7 +33,7 @@ public class Character {
     private Long id;
 
     @JsonIgnoreProperties(value="characters")
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name="server_id", nullable = false)
     private Server server;
 

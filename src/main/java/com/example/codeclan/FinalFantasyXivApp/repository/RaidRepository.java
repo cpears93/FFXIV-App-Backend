@@ -1,13 +1,13 @@
 package com.example.codeclan.FinalFantasyXivApp.repository;
 
 import com.example.codeclan.FinalFantasyXivApp.models.Raid;
-import org.hibernate.metamodel.model.convert.spi.JpaAttributeConverter;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface RaidRepository extends JpaAttributeConverter<Raid, Long> {
+public interface RaidRepository extends JpaRepository<Raid, Long> {
 
     List<Raid> findByName(String name);
     List<Raid> findByLevel(int level);
