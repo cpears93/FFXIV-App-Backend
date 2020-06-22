@@ -31,9 +31,15 @@ public class Raid {
     @Column(name = "unlock")
     private String unlock;
 
-    @JsonIgnoreProperties(value="raid")
-    @OneToMany(mappedBy = "raid", fetch = FetchType.LAZY)
-    private List<com.example.codeclan.FinalFantasyXivApp.models.Raid> raids;
+    @JsonIgnoreProperties(value= "raid")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "character_raids",
+            joinColumns = {@JoinColumn(name = "raid_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "character_id", nullable = false, updatable = false)}
+    )
+    private List<Character> characters;
 
     public Raid(String name, int level, int itemLevelReq, int turns, int lootItemLevel, int tomePerTurn, String unlock) {
         this.name = name;
