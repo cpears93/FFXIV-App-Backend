@@ -131,7 +131,7 @@ class FinalFantasyXivAppApplicationTests {
 	@Test
 	public void canFindItemLevelReq(){
 		List<Raid> found = raidRepository.findByItemLevelReq(295);
-		assertEquals(295, found.get(0).getLevel());
+		assertEquals(295, found.get(0).getItemLevelReq());
 	}
 
 	@Test

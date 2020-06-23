@@ -7,8 +7,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "raids")
+@Table(name = "raid")
 public class Raid {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -31,7 +35,7 @@ public class Raid {
     @Column(name = "unlock")
     private String unlock;
 
-    @JsonIgnoreProperties(value= "raid")
+    @JsonIgnoreProperties(value= "raids")
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(

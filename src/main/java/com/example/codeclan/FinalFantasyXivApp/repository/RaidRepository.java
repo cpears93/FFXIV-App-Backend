@@ -1,12 +1,11 @@
 package com.example.codeclan.FinalFantasyXivApp.repository;
 
 import com.example.codeclan.FinalFantasyXivApp.models.Raid;
+import com.example.codeclan.FinalFantasyXivApp.models.Server;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface RaidRepository extends JpaRepository<Raid, Long> {
 
     List<Raid> findByName(String name);
