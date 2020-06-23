@@ -15,14 +15,14 @@ public class RaidController {
     @Autowired
     RaidRepository raidRepository;
 
+    @GetMapping(value = "/raids/{id}")
+    public ResponseEntity getServer(@PathVariable Long id){
+        return new ResponseEntity<>(raidRepository.findById(id), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/raids")
     public ResponseEntity <List<Raid>> getAllRaids(){
         return new ResponseEntity<>(raidRepository.findAll(), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/servers/{id}")
-    public ResponseEntity getServer(@PathVariable Long id){
-        return new ResponseEntity<>(raidRepository.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/raids")
@@ -31,13 +31,13 @@ public class RaidController {
         return new ResponseEntity<>(raid, HttpStatus.CREATED);
     }
 
-    @PatchMapping(value = "/servers/{id}")
+    @PatchMapping(value = "/raids/{id}")
     public ResponseEntity<Raid> updateRaid(@RequestBody Raid raid){
         raidRepository.save(raid);
         return new ResponseEntity<>(raid, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/servers/{id}")
+    @DeleteMapping(value = "/raids/{id}")
     public ResponseEntity<Raid> deleteRaid(@PathVariable Long id){
         Raid found = raidRepository.getOne(id);
         raidRepository.delete(found);

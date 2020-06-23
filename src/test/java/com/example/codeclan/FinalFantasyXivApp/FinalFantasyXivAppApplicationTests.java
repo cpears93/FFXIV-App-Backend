@@ -44,6 +44,19 @@ class FinalFantasyXivAppApplicationTests {
 	}
 
 	@Test
+	public void createCharacterAndRaidThenSave(){
+
+
+		Server bahamut = new Server ("bahamut", "Gaia", "Japan", 95826);
+		serverRepository.save(bahamut);
+		Character machinist = new Character("None", "Machinist", "Ranged Physical DPS", "Ishgard", "Level 50", 30, bahamut);
+		characterRepository.save(machinist);
+		Raid heavensward2 = new Raid ("Alexander: Midas", 60, 215, 4, 220, 10, "Disarmed");
+		raidRepository.save(heavensward2);
+;
+	}
+
+	@Test
 	public void canFindCharacterByBaseClass(){
 		List<Character> found = characterRepository.findByBaseClass("Thaumaturge");
 		assertEquals("Thaumaturge", found.get(0).getBaseClass());
@@ -103,4 +116,45 @@ class FinalFantasyXivAppApplicationTests {
 		List<Server> found = serverRepository.findByPopulationGreaterThan(70000);
 	}
 
+	@Test
+	public void canFindName(){
+		List<Raid> found = raidRepository.findByName("The Unending Coil of Bahamut");
+		assertEquals("The Unending Coil of Bahamut", found.get(0).getName());
+	}
+
+	@Test
+	public void canFindLevel(){
+		List<Raid> found = raidRepository.findByLevel(80);
+		assertEquals(80, found.get(0).getLevel());
+	}
+
+	@Test
+	public void canFindItemLevelReq(){
+		List<Raid> found = raidRepository.findByItemLevelReq(295);
+		assertEquals(295, found.get(0).getLevel());
+	}
+
+	@Test
+	public void canFindTurns(){
+		List<Raid> found = raidRepository.findByTurns(4);
+		assertEquals(4, found.get(0).getTurns());
+	}
+
+	@Test
+	public void canFindLootItemLevel(){
+		List<Raid> found = raidRepository.findByLootItemLevel(345);
+		assertEquals(345, found.get(0).getLootItemLevel());
+	}
+
+	@Test
+	public void canFindTomePerTurn(){
+		List<Raid> found = raidRepository.findByTomePerTurn(10);
+		assertEquals(10, found.get(0).getTomePerTurn());
+	}
+
+	@Test
+	public void canFindUnlock(){
+		List<Raid> found = raidRepository.findByUnlock("In the Beginning, There Was Chaos");
+		assertEquals("In the Beginning, There Was Chaos", found.get(0).getUnlock());
+	}
 }
