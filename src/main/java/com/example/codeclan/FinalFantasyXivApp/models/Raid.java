@@ -35,9 +35,9 @@ public class Raid {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            name = "character_raids",
+            name = "character_raid",
             joinColumns = {@JoinColumn(name = "raid_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "character_id", nullable = false, updatable = false)}
+            inverseJoinColumns = {@JoinColumn(name="character_id", nullable = false, updatable = false)}
     )
     private List<Character> characters;
 

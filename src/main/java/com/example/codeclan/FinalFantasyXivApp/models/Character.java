@@ -1,6 +1,7 @@
 package com.example.codeclan.FinalFantasyXivApp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -33,10 +34,18 @@ public class Character {
     private Long id;
 
     @JsonIgnoreProperties(value="characters")
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="server_id", nullable = false)
     private Server server;
 
+    @JsonIgnoreProperties(value="characters")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "character_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "raid_id", nullable = false, updatable = false)}
+    )
+    private List<Raid> raids;
 
     public Character(String baseClass, String job, String role, String startingLocation, String prerequisites, int startingLevel, Server server) {
         this.baseClass = baseClass;
