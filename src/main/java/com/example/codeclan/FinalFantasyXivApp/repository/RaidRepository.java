@@ -1,7 +1,6 @@
 package com.example.codeclan.FinalFantasyXivApp.repository;
 
 import com.example.codeclan.FinalFantasyXivApp.models.Raid;
-import com.example.codeclan.FinalFantasyXivApp.models.Server;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

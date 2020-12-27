@@ -37,13 +37,10 @@ public class Server {
     private List<com.example.codeclan.FinalFantasyXivApp.models.Character> characters;
 
     public Server(String name, String world, String dataCenter, int population) {
-        this.id = id;
         this.name = name;
         this.world = world;
-        this.server = server;
         this.dataCenter = dataCenter;
         this.population = population;
-        this.serverStatus = serverStatus;
         this.characters = new ArrayList<com.example.codeclan.FinalFantasyXivApp.models.Character>();
     }
 
