@@ -77,8 +77,6 @@ public class DataLoader implements ApplicationRunner {
         serverRepository.save(mandragora);
 
 
-
-
         Character dragoon = new Character("Lancer", "Dragoon", "Melee DPS", "Gridania", "None", 1 , shiva);
         characterRepository.save(dragoon);
 
